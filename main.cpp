@@ -66,9 +66,10 @@ int main() {
         reviewRate=stof(reviewRateS);
 
         //not important, tags
-        getline(s, val, ',');
+        getline(s, val, ']');
 
         //not important, days since review (not accurate)
+        getline(s, val, ',');
         getline(s, val, ',');
 
         //latitude of hotel
@@ -109,6 +110,12 @@ int main() {
             cin>>searchName;
             Hotel* searchedHotel=koopaSearch.findHotel(searchName);
             searchedHotel->printReviews();
+        }
+        if(userChoice==2){
+            string searchCountry;
+            cout<<"Enter the country to search for: ";
+            cin>>searchCountry;
+            koopaSearch.printByCountry(searchCountry);
         }
     }
 

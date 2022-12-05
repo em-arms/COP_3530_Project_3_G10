@@ -1,6 +1,8 @@
 #include <iostream>
 #include <vector>
 #include "Review.cpp"
+#include <fstream>
+#include <sstream>
 using namespace std;
 
 class Hotel {
@@ -19,6 +21,15 @@ public:
         address=address_;
         name=name_;
         averageRating=averageRate_;
+
+        //get country from address
+        stringstream s(address);
+        string val;
+        while(getline(s, val, ' ')){}
+        if(val=="Kingdom"){
+            val="United Kingdom"; //to account for two word country
+        }
+        country=val;
     }
 
     void addReview(string date_, float rating_, string nReview_, string pReview_){
@@ -35,6 +46,10 @@ public:
 
     string getName(){
         return name;
+    }
+
+    string getCountry(){
+        return country;
     }
 };
 

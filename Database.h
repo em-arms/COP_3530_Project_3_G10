@@ -7,7 +7,7 @@ private:
     //map object?
     map <string, Hotel*> hotels;    //name, hotel
     int numLocations;
-
+    map <string, vector<Hotel*>> hotelsByCountry;
 
 public:
     void addHotel(string address_, string hotelName_, float averageRate_);
@@ -16,6 +16,7 @@ public:
     Hotel* findHotel(string hotelName);
     bool hotelExists(string hotelName);
     map <string, Hotel*> getHotels();
+    void printByCountry(string countryName);
 
 
 };
