@@ -1,3 +1,6 @@
+#ifndef HOTEL_H
+#define HOTEL_H
+
 #include <iostream>
 #include <vector>
 #include "Review.cpp"
@@ -69,5 +72,5 @@ public:
     }
 };
 
-
+#endif
 
