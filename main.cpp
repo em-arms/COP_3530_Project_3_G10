@@ -100,22 +100,37 @@ int main() {
     }
 */
     int userChoice=-1;
+    int structureChoice=-1;
     while(userChoice!=4){
-        cout<<"menu"<<endl;
+        cout<<"1. Search by Name of the Hotel and Print Reviews\n2. Search by Country \n3. Search by City\n4. Quit "<<endl;
         cin>>userChoice;
+        if(userChoice==4){
+            break;
+        }
+        cout<<"1.Use the B+ tree\n 2.Use the map"<<endl;
+        cin>>structureChoice;
 
         if(userChoice==1){
             string searchName;
             cout<<"enter name to search for: ";
             cin>>searchName;
-            Hotel* searchedHotel=koopaSearch.findHotel(searchName);
-            searchedHotel->printReviews();
+            if(structureChoice==1){
+                Hotel* searchedHotel=koopaSearch.findHotel(searchName);
+                searchedHotel->printReviews();
+            }
+
         }
         if(userChoice==2){
             string searchCountry;
             cout<<"Enter the country to search for: ";
             cin>>searchCountry;
             koopaSearch.printByCountry(searchCountry);
+        }
+        if(userChoice==3){
+            string searchCity;
+            cout<<"Enter city to search for: ";
+            cin>>searchCity;
+            koopaSearch.printByCity(searchCity);
         }
     }
 

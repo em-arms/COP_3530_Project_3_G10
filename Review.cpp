@@ -21,6 +21,6 @@ public:
 
     void printReview(){
         cout<<date<<"\t"<<rating<<"\t"<<negReview<<" "<<posReview<<endl;
-        cout<<"printing"<<endl;
+
     }
 };

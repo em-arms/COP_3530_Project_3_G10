@@ -12,9 +12,8 @@ private:
     float averageRating;
     vector <Review*> reviews;
     string country;
+    string city;
 
-    int numReviews;     //might not be necessary since I am pretty sure it gives the hotels average rating already
-    float points;
 
 public:
     Hotel(string address_, string name_, float averageRate_){
@@ -22,10 +21,23 @@ public:
         name=name_;
         averageRating=averageRate_;
 
-        //get country from address
+        //get country and city from address
         stringstream s(address);
         string val;
-        while(getline(s, val, ' ')){}
+        string addA, temp1, temp2,temp3, addB;
+        while(getline(s, val, ' ')){ //london addresses have postal code after city, so addB will hold that if that is the case
+            addB=temp3;
+            temp3=temp2;
+            temp2=temp1;
+            temp1=addA;
+            addA=val;
+        }
+        if(addB=="London"){
+            city="London";
+        }
+        else{
+            city=temp1;
+        }
         if(val=="Kingdom"){
             val="United Kingdom"; //to account for two word country
         }
@@ -38,6 +50,7 @@ public:
     }
 
     void printReviews(){
+        cout<<"Average rate: "<<averageRating<<" Address: "<<address<<endl;
         for(int i=0; i<reviews.size(); i++){
             reviews[i]->printReview();
 
@@ -50,6 +63,9 @@ public:
 
     string getCountry(){
         return country;
+    }
+    string getCity(){
+        return city;
     }
 };
 
