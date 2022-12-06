@@ -114,7 +114,7 @@ int main() {
         if(userChoice==4){
             break;
         }
-        cout<<"1.Use the B+ tree\n 2.Use the map"<<endl;
+        cout<<"1.Use the B+ tree\n2.Use the map"<<endl;
         cin>>structureChoice;
 
         if(userChoice==1){
