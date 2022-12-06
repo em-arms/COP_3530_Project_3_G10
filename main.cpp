@@ -2,8 +2,11 @@
 #include <fstream>
 #include <string>
 #include <sstream>
+#include "B+ Tree.h"
 #include "Database.h"
+
 using namespace std;
+
 int main() {
     ifstream file;
 
@@ -14,6 +17,7 @@ int main() {
     getline(file, line);
 
     Database koopaSearch=Database();
+    nameBPTree koopaTree;
 
     while(file>>line){
 
@@ -87,6 +91,7 @@ int main() {
             currHotel=new Hotel(address, hotelName, hotelRate);
             //add hotel to map
             koopaSearch.addHotel(currHotel);
+            koopaTree.insert(currHotel);
         }
 
         currHotel->addReview(reviewDate, reviewRate, negReview, posReview);
@@ -99,6 +104,8 @@ int main() {
         cout<<it->first<<endl;
     }
 */
+    file.close();
+    
     int userChoice=-1;
     int structureChoice=-1;
     while(userChoice!=4){
@@ -113,24 +120,43 @@ int main() {
         if(userChoice==1){
             string searchName;
             cout<<"enter name to search for: ";
-            cin>>searchName;
-            if(structureChoice==1){
+            getline(cin >> ws, searchName);
+            if(structureChoice == 1) {
+                Hotel* searchedHotel koopaTree.search(searchName);
+                if (searhedHotel != nullptr) {
+                    searchedHotel->printReviews();
+                }
+                else {
+                    cout << "Hotel Not Found!" << endl;
+                }
+                
+            }
+            if(structureChoice==2){
                 Hotel* searchedHotel=koopaSearch.findHotel(searchName);
                 searchedHotel->printReviews();
             }
-
         }
         if(userChoice==2){
             string searchCountry;
             cout<<"Enter the country to search for: ";
-            cin>>searchCountry;
-            koopaSearch.printByCountry(searchCountry);
+            getline(cin >> ws, searchCountry);
+            if(structureChoice == 1) {
+                koopaTree.displayCountry(koopaTree.getRoot(), searchCountry);
+            }
+            if(structureChoice == 2) {
+                koopaSearch.printByCountry(searchCountry);
+            }
         }
         if(userChoice==3){
             string searchCity;
             cout<<"Enter city to search for: ";
-            cin>>searchCity;
-            koopaSearch.printByCity(searchCity);
+            getline(cin >> ws, searchCity);
+            if(structureChoice == 1) {
+                koopaTree.displayCity(koopaTree.getRoot(), searchCity);
+             }
+             if(structureChoice == 2) {
+                koopaSearch.printByCity(searchCity);
+             }
         }
     }
 
