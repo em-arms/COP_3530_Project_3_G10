@@ -122,8 +122,8 @@ int main() {
             cout<<"enter name to search for: ";
             getline(cin >> ws, searchName);
             if(structureChoice == 1) {
-                Hotel* searchedHotel koopaTree.search(searchName);
-                if (searhedHotel != nullptr) {
+                Hotel* searchedHotel = koopaTree.search(searchName);
+                if (searchedHotel != nullptr) {
                     searchedHotel->printReviews();
                 }
                 else {
