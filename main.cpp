@@ -3,7 +3,7 @@
 #include <string>
 #include <sstream>
 #include "B+ Tree.h"
-#include "Database.h"
+#include "mapDatabase.h"
 
 using namespace std;
 
@@ -16,7 +16,7 @@ int main() {
 
     getline(file, line);
 
-    Database koopaSearch=Database();
+    mapDatabase koopaSearch=mapDatabase();
     nameBPTree koopaTree;
 
     while(file>>line){
@@ -98,12 +98,7 @@ int main() {
 
     }
 
-/*
-    //iterate through hotels to see what is in database
-    for(auto it=koopaSearch.getHotels().begin(); it!=koopaSearch.getHotels().end(); it++){
-        cout<<it->first<<endl;
-    }
-*/
+
     file.close();
     
     int userChoice=-1;
@@ -161,7 +156,5 @@ int main() {
     }
 
 
-
-    std::cout << "Hello, World!" << std::endl;
     return 0;
 }
