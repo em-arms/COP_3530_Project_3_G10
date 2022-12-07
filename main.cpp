@@ -10,7 +10,7 @@ using namespace std;
 int main() {
     ifstream file;
 
-    file.open("C:/Users/finnl/Desktop/Emu's stuff/COP 3530 project 3/Version 1/Hotel_Reviews.csv", ios::in);
+    file.open("Hotel_Reviews.csv", ios::in);
     string firstVal;
     string line, val;
 
